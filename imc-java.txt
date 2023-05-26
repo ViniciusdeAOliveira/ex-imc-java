@@ -1,0 +1,40 @@
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+public class CalculadoraIMC {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite o peso em quilogramas: ");
+        double peso = scanner.nextDouble();
+
+        System.out.print("Digite a altura em metros: ");
+        double altura = scanner.nextDouble();
+
+        // Calculando o IMC
+        double imc = calcularIMC(peso, altura);
+
+        // Formatando o resultado para 2 casas decimais
+        DecimalFormat df = new DecimalFormat("#.00");
+        String resultadoFormatado = df.format(imc);
+
+        // Exibindo o resultado
+        System.out.println("Seu IMC é: " + resultadoFormatado);
+
+        // Exibindo a categoria do IMC
+        if (imc < 18.5) {
+            System.out.println("Categoria: Magreza");
+        } else if (imc >= 18.5 && imc < 24.9) {
+            System.out.println("Categoria: Normal");
+        } else if (imc >= 24.9 && imc < 30) {
+            System.out.println("Categoria: Sobrepeso");
+        } else {
+            System.out.println("Categoria: Obesidade");
+        }
+    }
+
+    public static double calcularIMC(double peso, double altura) {
+        // Fórmula para cálculo do IMC: peso / (altura * altura)
+        return peso / (altura * altura);
+    }
+}
